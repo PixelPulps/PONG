@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dh33ja65ktd0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26pwn"]
+size = Vector2(1200, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5k0l"]
+size = Vector2(1198.5, 4)
+
+[node name="Spielfeld" type="Node2D" unique_id=1214658712]
+
+[node name="Wand_oben" type="StaticBody2D" parent="." unique_id=2011001]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wand_oben" unique_id=1788845504]
+position = Vector2(600, 2.5)
+shape = SubResource("RectangleShape2D_26pwn")
+
+[node name="ColorRect" type="ColorRect" parent="Wand_oben" unique_id=2092316614]
+offset_right = 1200.0
+offset_bottom = 5.0
+
+[node name="Wand_unten" type="StaticBody2D" parent="." unique_id=2025368433]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wand_unten" unique_id=919490147]
+position = Vector2(599, 597)
+shape = SubResource("RectangleShape2D_u5k0l")
+
+[node name="ColorRect" type="ColorRect" parent="Wand_unten" unique_id=1903166037]
+offset_top = 595.0
+offset_right = 1200.0
+offset_bottom = 600.0
+
+[node name="Mittellinie" type="StaticBody2D" parent="." unique_id=1241338102]
+
+[node name="ColorRect" type="ColorRect" parent="Mittellinie" unique_id=533628574]
+offset_left = 597.5
+offset_right = 602.5
+offset_bottom = 600.0
