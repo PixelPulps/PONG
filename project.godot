@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="PONG"
+run/main_scene="uid://cyoqd37i045qh"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=600
 
 [physics]
 
