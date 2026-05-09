@@ -6,6 +6,12 @@ size = Vector2(1200, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5k0l"]
 size = Vector2(1198.5, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4j7e"]
+size = Vector2(20, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf1e6"]
+size = Vector2(20, 600)
+
 [node name="Spielfeld" type="Node2D" unique_id=1214658712]
 
 [node name="Wand_oben" type="StaticBody2D" parent="." unique_id=2011001]
@@ -35,3 +41,15 @@ offset_bottom = 600.0
 offset_left = 597.5
 offset_right = 602.5
 offset_bottom = 600.0
+
+[node name="LinkesAus" type="Area2D" parent="." unique_id=1940508830]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LinkesAus" unique_id=1899685498]
+position = Vector2(-11, 300)
+shape = SubResource("RectangleShape2D_j4j7e")
+
+[node name="RechtesAus" type="Area2D" parent="." unique_id=567633504]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RechtesAus" unique_id=835908114]
+position = Vector2(1210, 301)
+shape = SubResource("RectangleShape2D_tf1e6")
