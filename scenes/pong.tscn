@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dh33ja65ktd0i" path="res://scenes/spielfeld.tscn" id="1_ik6sa"]
 [ext_resource type="PackedScene" uid="uid://5ss32c4nnysb" path="res://scenes/player1.tscn" id="2_ploue"]
+[ext_resource type="Script" uid="uid://c6nqhqahw4kav" path="res://scripts/player1.gd" id="3_7aeas"]
 [ext_resource type="PackedScene" uid="uid://dba0p71t88fvd" path="res://scenes/player2.tscn" id="3_60vo6"]
 [ext_resource type="PackedScene" uid="uid://iuv2cv10iesk" path="res://scenes/ball.tscn" id="4_ploue"]
 
@@ -10,6 +11,7 @@
 [node name="Spielfeld" parent="." unique_id=1214658712 instance=ExtResource("1_ik6sa")]
 
 [node name="Player1" parent="." unique_id=1701361098 instance=ExtResource("2_ploue")]
+script = ExtResource("3_7aeas")
 
 [node name="Player2" parent="." unique_id=59068947 instance=ExtResource("3_60vo6")]
 
