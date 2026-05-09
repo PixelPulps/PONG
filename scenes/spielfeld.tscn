@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://dh33ja65ktd0i"]
 
+[ext_resource type="Script" uid="uid://bnt0raa15om0w" path="res://scripts/linkes_aus.gd" id="1_u5k0l"]
+[ext_resource type="Script" uid="uid://damo65h7gusi2" path="res://scripts/rechtes_aus.gd" id="2_j4j7e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_26pwn"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26pwn"]
 size = Vector2(1200, 5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5k0l"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5k0l"]
 size = Vector2(1198.5, 4)
@@ -15,6 +26,7 @@ size = Vector2(20, 600)
 [node name="Spielfeld" type="Node2D" unique_id=1214658712]
 
 [node name="Wand_oben" type="StaticBody2D" parent="." unique_id=2011001]
+physics_material_override = SubResource("PhysicsMaterial_26pwn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wand_oben" unique_id=1788845504]
 position = Vector2(600, 2.5)
@@ -25,6 +37,7 @@ offset_right = 1200.0
 offset_bottom = 5.0
 
 [node name="Wand_unten" type="StaticBody2D" parent="." unique_id=2025368433]
+physics_material_override = SubResource("PhysicsMaterial_u5k0l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wand_unten" unique_id=919490147]
 position = Vector2(599, 597)
@@ -43,13 +56,18 @@ offset_right = 602.5
 offset_bottom = 600.0
 
 [node name="LinkesAus" type="Area2D" parent="." unique_id=1940508830]
+script = ExtResource("1_u5k0l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LinkesAus" unique_id=1899685498]
 position = Vector2(-11, 300)
 shape = SubResource("RectangleShape2D_j4j7e")
 
 [node name="RechtesAus" type="Area2D" parent="." unique_id=567633504]
+script = ExtResource("2_j4j7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RechtesAus" unique_id=835908114]
 position = Vector2(1210, 301)
 shape = SubResource("RectangleShape2D_tf1e6")
+
+[connection signal="body_entered" from="LinkesAus" to="LinkesAus" method="_on_body_entered"]
+[connection signal="body_entered" from="RechtesAus" to="RechtesAus" method="_on_body_entered"]

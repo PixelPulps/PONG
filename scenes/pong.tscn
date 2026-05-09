@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://c6nqhqahw4kav" path="res://scripts/player1.gd" id="3_7aeas"]
 [ext_resource type="PackedScene" uid="uid://dba0p71t88fvd" path="res://scenes/player2.tscn" id="3_60vo6"]
 [ext_resource type="PackedScene" uid="uid://iuv2cv10iesk" path="res://scenes/ball.tscn" id="4_ploue"]
+[ext_resource type="Script" uid="uid://cwsununc8sdus" path="res://scripts/player2_AI.gd" id="5_7aeas"]
+[ext_resource type="Script" uid="uid://cxppgp2n74wpj" path="res://scripts/ball_wird_schneller.gd" id="7_1gkem"]
+[ext_resource type="PackedScene" uid="uid://bqva6kt2n2ctg" path="res://scenes/gamemanager.tscn" id="9_osehs"]
+[ext_resource type="Script" uid="uid://bp4bg2q43yxus" path="res://scripts/gamemanager.gd" id="10_scnf6"]
 
 [node name="PONG" type="Node2D" unique_id=109224624]
 
@@ -13,6 +17,16 @@
 [node name="Player1" parent="." unique_id=1701361098 instance=ExtResource("2_ploue")]
 script = ExtResource("3_7aeas")
 
-[node name="Player2" parent="." unique_id=59068947 instance=ExtResource("3_60vo6")]
+[node name="Player2" parent="." unique_id=59068947 node_paths=PackedStringArray("ball") instance=ExtResource("3_60vo6")]
+script = ExtResource("5_7aeas")
+speed = 260.0
+ball = NodePath("../Ball")
 
 [node name="Ball" parent="." unique_id=705529929 instance=ExtResource("4_ploue")]
+script = ExtResource("7_1gkem")
+
+[node name="GameManager" parent="." unique_id=189254825 node_paths=PackedStringArray("ball", "player1", "player2") instance=ExtResource("9_osehs")]
+script = ExtResource("10_scnf6")
+ball = NodePath("../Ball")
+player1 = NodePath("../Player1")
+player2 = NodePath("../Player2")
