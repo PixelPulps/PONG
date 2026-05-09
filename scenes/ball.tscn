@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://iuv2cv10iesk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1dj2"]
-size = Vector2(5, 5)
+size = Vector2(10, 10)
 
 [node name="Ball" type="RigidBody2D" unique_id=705529929]
 position = Vector2(798, 285)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2040713691]
-offset_right = 5.0
-offset_bottom = 5.0
+offset_right = 10.0
+offset_bottom = 10.0
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1213508980]
-position = Vector2(2.5, 2.5)
+position = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_n1dj2")
