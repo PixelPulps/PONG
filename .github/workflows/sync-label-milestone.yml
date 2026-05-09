@@ -1,0 +1,64 @@
+name: Auto assign milestone from version label
+
+on:
+  issues:
+    types:
+      - labeled
+
+permissions:
+  issues: write
+
+jobs:
+  sync-milestone:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Assign matching milestone
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const label = context.payload.label.name;
+
+            // Nur Versionlabels wie:
+            // v1.0.0
+            // v2.1.3
+            // v10.20.30
+            if (!/^v\d+\.\d+\.\d+$/.test(label)) {
+              console.log(`Ignoring label: ${label}`);
+              return;
+            }
+
+            const { owner, repo } = context.repo;
+
+            // Alle offenen Milestones laden
+            const milestones = await github.paginate(
+              github.rest.issues.listMilestones,
+              {
+                owner,
+                repo,
+                state: "open"
+              }
+            );
+
+            // passenden Milestone finden
+            const milestone = milestones.find(
+              m => m.title === label
+            );
+
+            if (!milestone) {
+              console.log(`No milestone found for ${label}`);
+              return;
+            }
+
+            // Milestone ans Issue hängen
+            await github.rest.issues.update({
+              owner,
+              repo,
+              issue_number: context.payload.issue.number,
+              milestone: milestone.number
+            });
+
+            console.log(
+              `Assigned milestone '${label}' to issue #${context.payload.issue.number}`
+            );
